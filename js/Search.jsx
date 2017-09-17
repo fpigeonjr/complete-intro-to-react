@@ -23,7 +23,7 @@ class Search extends Component {
           />
         </header>
         <div>
-          {/*find shows from search term */}
+          {/* find shows from search term */}
           {preload.shows
             .filter(
               show =>
