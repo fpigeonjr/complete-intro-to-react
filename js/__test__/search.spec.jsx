@@ -14,4 +14,14 @@ test("Search should render correct amount of shows", () => {
   expect(component.find(ShowCard).length).toEqual(preload.shows.length);
 });
 
-xtest("Search should render correct number of terms based on ");
+test("Search should render correct amount of shows based on search", () => {
+  const searchWord = "house";
+  const component = shallow(<Search />);
+  component.find("input").simulate("change", { target: { value: searchWord } });
+  const showCount = preload.shows.filter(show =>
+    `${show.title.toUpperCase()} ${show.description.toUpperCase()}`.includes(
+      searchWord.toUpperCase()
+    )
+  ).length;
+  expect(showCount).toEqual(component.find(ShowCard).length);
+});
